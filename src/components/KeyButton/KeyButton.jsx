@@ -14,7 +14,7 @@ function KeyButton({ type = 'default' }) {
     }
   };
 
-  return <div className={'keybutton'}>{renderKeyButton()}</div>;
+  return <div className={'keybutton'}>{renderKeyButton()}1</div>;
 }
 
 export default KeyButton;
