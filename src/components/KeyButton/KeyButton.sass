@@ -1,9 +1,40 @@
 .key-button
   display: flex
-  width: 100px
-  height: 100px
+  justify-content: center
+  align-items: center
+  width: 80px
+  height: 80px
+  border: 2px solid white
+  border-radius: 10px
   .key-button__keys
     .key-button__key
       color: green
-    .active
-      color: white
+      transition: .1s ease-out
+      font-size: 2rem
+      &.active
+        color: white
+  &.key-button--Backspace
+    width: calc(80px * 2.2)
+
+  &.key-button--Tab
+    width: calc(80px * 1.5)
+  &.key-button--Slash
+    width: calc(80px * 1.7)
+
+  &.key-button--Caps
+    width: calc(80px * 1.9)
+  &.key-button--Enter
+    width: calc(80px * 2.4)
+    flex: 1
+
+  &.key-button--ShiftL
+    width: calc(80px * 2.5)
+  &.key-button--ShiftR
+    width: calc(80px * 2.8)
+    flex: 1
+
+  &.key-button--Space
+    margin-left: calc(80px * 1.4 * 3)
+    width: calc(80px * 8)
+
+
