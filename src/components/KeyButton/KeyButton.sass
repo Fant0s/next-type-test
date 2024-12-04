@@ -6,14 +6,33 @@
   height: 80px
   border: 2px solid white
   border-radius: 10px
+  transition: .1s ease-out
+  box-shadow: 0 0 5px #676767
+  &.not-write
+    opacity: .4
+  &.active
+    background-color: white
+    transform-origin: bottom center
+    box-shadow: 0 0 10px var(--bg-color)
+    transform: scaleY(95%)
+    .key-button__keys
+      .key-button__key
+        color: var(--bg-color)
+        svg
+          path
+            fill: var(--bg-color)
   .key-button__keys
     .key-button__key
-      color: green
+      color: white
       transition: .1s ease-out
       font-size: 2rem
-      &.active
-        color: white
+      line-height: 100%
+      &.common
+        font-size: 1.25rem
+      &.Upper
+        text-transform: uppercase
   &.key-button--Backspace
+    display: flex
     width: calc(80px * 2.2)
 
   &.key-button--Tab
