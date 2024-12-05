@@ -1,86 +1,25 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './page.sass';
 
 import KeyButton from '@/components/KeyButton/KeyButton';
-import { useParams } from 'next/navigation';
 import WordsWrite from '@/components/wordsWrite/wordsWrite';
+import { useParams } from 'next/navigation';
+import { useSelector } from 'react-redux';
 
 function Game() {
   const params = useParams();
   const language = params.language;
 
-  const [pressedKeys, setPressedKeys] = useState([]);
-  const [currentKey, setCurrentKey] = useState('');
-
-  const handleKeyDown = (e) => {
-    const char = e.key === ' ' ? 'Space' : e.key;
-
-    if (
-      e.code.startsWith('F') ||
-      [
-        'Control',
-        'Alt',
-        'CapsLock',
-        'Meta',
-        'ContextMenu',
-        'Tab',
-        'Escape',
-        'ArrowUp',
-        'ArrowDown',
-        'ArrowLeft',
-        'ArrowRight',
-        'Delete',
-        'Insert',
-        'Home',
-        'End',
-        'PageUp',
-        'PageDown',
-        'ScrollLock',
-        'Pause',
-      ].includes(char)
-    ) {
-      return;
-    }
-
-    if (char === 'Backspace') {
-      setPressedKeys((prev) => prev.slice(0, -1));
-      return;
-    }
-
-    if (char === 'Space') {
-      setCurrentKey(' ');
-      setPressedKeys((prev) => [...prev, ' ']);
-    } else if (char === 'Shift') {
-      setCurrentKey(char);
-      setPressedKeys((prev) => [...prev, '']);
-    } else {
-      setCurrentKey(char);
-      setPressedKeys((prev) => [...prev, char]);
-    }
-  };
-
-  const handleKeyUp = () => {
-    setCurrentKey('');
-  };
-
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyUp);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('keyup', handleKeyUp);
-    };
-  }, [language]);
+  const currentKey = useSelector((state) => state.currentKey.value.payload);
 
   return (
     <div className={'game'}>
-      <WordsWrite pressedKeys={pressedKeys} />
+      <WordsWrite language={language} />
       <div className="keyboard">
         <div className="row">
           <KeyButton
-            write={language === 'ru'}
+            write={false}
             language={language}
             keys={{ ru: ['ё'], en: ['`', '~'] }}
             currentKey={currentKey}

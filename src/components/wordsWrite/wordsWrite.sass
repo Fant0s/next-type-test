@@ -15,7 +15,6 @@
     display: flex
     flex-direction: row
     flex-wrap: wrap
-    opacity: .3
     .word
       display: flex
       flex-direction: row
@@ -24,6 +23,13 @@
       .letter
         color: white
         font-size: 32px
+        opacity: .3
+        transition: .2s ease-out
+        &.correct
+          opacity: 1
+        &.incorrect
+          opacity: 1
+          color: red
   //.write
   //  color: white
   //  font-size: 32px

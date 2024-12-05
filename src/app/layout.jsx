@@ -1,6 +1,7 @@
 import './common.sass';
 import './vars.sass';
 import './layout.sass';
+import ReduxProvider from './ReduxProvider';
 
 export const metadata = {
   title: 'Game',
@@ -10,7 +11,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ru">
-      <body className={`layout`}>{children}</body>
+      <body className={`layout`}>
+        <ReduxProvider>{children}</ReduxProvider>
+      </body>
     </html>
   );
 }
